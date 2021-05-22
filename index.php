@@ -11,23 +11,15 @@ if($method == 'POST'){
 	
 	
 
-	 switch ($text) {
-		case 'hi':
-			$speech = "Hi, Nice to meet you";
-			break;
+	 if($text == '')
 
-		case 'bye':
-			$speech = "Bye, good night";
-			break;
-
-		case 'anything':
-			$speech = "Yes, you can type anything here.";
-			break;
+	{
 		
-		default:
-			$speech = "Sorry, I didnt get that. Please ask me something else.";
-			break;
-	} 
+		$speech = $text;
+	}
+ else{
+	 $speech = 'dd';
+ }
  
 	$response = new \stdClass();
 	$response->speech = "$speech";
