@@ -7,11 +7,11 @@ if($method == 'POST'){
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 
-	//$text = $json->result->parameters->text;
+	$text = $json->result->parameters->text;
 	
-	//$speech = $json->result->parameters->text;
 
-	/* switch ($text) {
+
+	 switch ($text) {
 		case 'hi':
 			$speech = "Hi, Nice to meet you";
 			break;
@@ -30,11 +30,11 @@ if($method == 'POST'){
 	} */
  
 	$response = new \stdClass();
-	$response->speech = "$json";
-	$response->displayText = "$json";
+	$response->speech = "$speech";
+	$response->displayText = "$speech";
 	$response->source = 'source-of-the-response';
-	$response->return = "$json";
-	$response->fulfillmentText = "$json";
+	$response->return = "$speech";
+	$response->fulfillmentText = "$speech";
 	echo json_encode($response);
 }
 else
