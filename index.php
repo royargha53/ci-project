@@ -9,7 +9,7 @@ if($method == 'POST'){
 
 	//$text = $json->result->parameters->text;
 	
-	$speech = $json->result->parameters->text;
+	//$speech = $json->result->parameters->text;
 
 	/* switch ($text) {
 		case 'hi':
@@ -30,11 +30,11 @@ if($method == 'POST'){
 	} */
  
 	$response = new \stdClass();
-	$response->speech = "$speech";
-	$response->displayText = "$speech";
+	$response->speech = "$json";
+	$response->displayText = "$json";
 	$response->source = 'source-of-the-response';
-	$response->return = "$speech";
-	$response->fulfillmentText = "$speech";
+	$response->return = "$json";
+	$response->fulfillmentText = "$json";
 	echo json_encode($response);
 }
 else
