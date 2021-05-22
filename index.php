@@ -7,19 +7,7 @@ if($method == 'POST'){
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 
-	$text = $json->result->parameters->text;
-	
-	
-
-	 if($text == '')
-
-	{
-		
-		$speech = $text;
-	}
- else{
-	 $speech = 'dd';
- }
+	$speech = $json;
  
 	$response = new \stdClass();
 	$response->speech = "$speech";
