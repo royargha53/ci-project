@@ -6,18 +6,23 @@ $method = $_SERVER['REQUEST_METHOD'];
 if($method == 'POST'){
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
-
-	//$text = $json->result->parameters->text;
 	
-	$speech = $json->result->parameters->text;
+	//$text = $input["result"]["action"];
+	//$text = $json->result->parameters->text;
+	$text = $json->result->metadata->intentName;
 
-	/* switch ($text) {
+	switch ($text) {
 		case 'hi':
-			$speech = "Hi, Nice to meet you";
+			$speech = "1.Get the Missing Meter Numbers from DMD report.
+                              2.Validate and filter out the meters which are not exist in MDM.
+                              3.Get the meter details from CIMS using meter and send out mail to Tim.
+                              4.Once Tim flip it to standard meter, Create HPSM ticket.
+     
+                              Document URL: https://www.spreadsheet.com/";
 			break;
 
 		case 'bye':
-			$speech = "Bye, good night";
+			$speech = "PECO missing meter number details";
 			break;
 
 		case 'anything':
@@ -25,19 +30,23 @@ if($method == 'POST'){
 			break;
 		
 		default:
-			$speech = "Sorry, I didnt get that. Please ask me something else.";
+			$speech = "Sorry, can you please elobarate more";
 			break;
-	} */
- 
+	}
+
 	$response = new \stdClass();
-	$response->speech = $speech;
-	$response->displayText = $speech;
-	$response->source = "webhook";
+	$response->speech = "$speech";
+	$response->displayText = "$speech";
+	$response->source = 'source-of-the-response';
+	$response->return = "$speech";
+	$response->fulfillmentText = "$speech";
 	echo json_encode($response);
 }
 else
 {
-	echo "Method not allowed";
+	$speech = "Ok";
+	$response->speech = "$speech";
+	echo json_encode($response);
 }
 
 ?>
