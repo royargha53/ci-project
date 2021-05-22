@@ -11,7 +11,7 @@ if($method == 'POST'){
 	
 	$speech = $json->result->parameters->text;
 
-	 switch ($text) {
+	/* switch ($text) {
 		case 'hi':
 			$speech = "Hi, Nice to meet you";
 			break;
@@ -27,7 +27,7 @@ if($method == 'POST'){
 		default:
 			$speech = "Sorry, I didnt get that. Please ask me something else.";
 			break;
-	} 
+	} */
  
 	$response = new \stdClass();
 	$response->speech = "$speech";
